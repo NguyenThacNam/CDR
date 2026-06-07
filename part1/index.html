@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luyện tập KET Reading Part 1</title>
+<style>
+  :root {
+    --bg: #f1f5f9; --card: #ffffff; --ink: #1e293b; --muted: #64748b;
+    --line: #e2e8f0; --brand: #2563eb; --brand-dark: #1d4ed8;
+    --ok: #16a34a; --ok-bg: #dcfce7; --bad: #dc2626; --bad-bg: #fee2e2;
+    --warn-bg: #fff7ed; --warn-line: #fdba74;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    background: var(--bg); color: var(--ink); line-height: 1.5;
+  }
+  header {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb); color: #fff;
+    padding: 20px; text-align: center;
+  }
+  header h1 { margin: 0 0 4px; font-size: 22px; }
+  header p { margin: 0; opacity: .85; font-size: 14px; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+
+  .toolbar {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    justify-content: space-between; margin-bottom: 14px;
+  }
+  .picker { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  select, button {
+    font: inherit; border-radius: 8px; border: 1px solid var(--line);
+    padding: 8px 12px; background: #fff; cursor: pointer;
+  }
+  button.primary { background: var(--brand); color: #fff; border-color: var(--brand); font-weight: 600; }
+  button.primary:hover { background: var(--brand-dark); }
+  button.ghost:hover { background: #f8fafc; }
+  button:disabled { opacity: .5; cursor: not-allowed; }
+  .progress-bar { height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; margin-bottom: 16px; }
+  .progress-bar > div { height: 100%; background: var(--brand); width: 0; transition: width .3s; }
+
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .card h2 { margin: 0 0 4px; font-size: 18px; }
+  .hint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+
+  .qrow {
+    display: grid; grid-template-columns: 1fr 130px; gap: 12px; align-items: start;
+    padding: 12px 0; border-top: 1px solid var(--line);
+  }
+  .qrow:first-of-type { border-top: none; }
+  .qrow .qtext { font-size: 15px; }
+  .qrow .qnum { color: var(--brand); font-weight: 700; margin-right: 6px; }
+  .qrow.example { opacity: .7; }
+  .badge-eg { font-size: 11px; background: #e0e7ff; color: #3730a3; padding: 1px 7px; border-radius: 99px; margin-left: 6px; vertical-align: middle; }
+  .qrow select { width: 100%; font-weight: 600; }
+  .verdict { font-size: 13px; margin-top: 6px; }
+  .verdict.ok { color: var(--ok); }
+  .verdict.bad { color: var(--bad); }
+  .explain { font-size: 13px; color: var(--muted); margin-top: 4px; background: var(--warn-bg); border: 1px solid var(--warn-line); border-radius: 8px; padding: 6px 10px; }
+
+  select.ok { background: var(--ok-bg); border-color: var(--ok); }
+  select.bad { background: var(--bad-bg); border-color: var(--bad); }
+
+  .signs { margin-top: 8px; }
+  .signs summary { cursor: pointer; font-weight: 600; color: var(--brand); font-size: 14px; padding: 6px 0; }
+  .signlist { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 6px; }
+  .signlist li { display: grid; grid-template-columns: 28px 1fr; gap: 8px; font-size: 14px; padding: 6px 8px; border-radius: 8px; background: #f8fafc; }
+  .signlist .L { font-weight: 700; color: var(--brand); }
+  .signlist li.used { background: #eff6ff; }
+
+  .result { display: none; text-align: center; padding: 16px; border-radius: 12px; margin-bottom: 16px; font-weight: 600; }
+  .result.show { display: block; }
+  .result.good { background: var(--ok-bg); color: var(--ok); }
+  .result.mid { background: var(--warn-bg); color: #c2410c; }
+
+  .nav { display: flex; justify-content: space-between; gap: 8px; }
+  footer { text-align: center; color: var(--muted); font-size: 12px; padding: 24px 0; }
+  @media (max-width: 520px) {
+    .qrow { grid-template-columns: 1fr 96px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Luyện tập KET Reading Part 1</h1>
+  <p>Nối câu mô tả (Statements) với biển báo phù hợp (Signs)</p>
+</header>
+
+<div class="wrap">
+  <div class="toolbar">
+    <div class="picker">
+      <label for="exSel">Bài:</label>
+      <select id="exSel"></select>
+      <button class="ghost" id="shuffleBtn" title="Đảo thứ tự biển báo">🔀 Đảo đáp án</button>
+    </div>
+    <div class="picker">
+      <span id="scoreTag" style="font-size:14px;color:var(--muted)"></span>
+    </div>
+  </div>
+  <div class="progress-bar"><div id="prog"></div></div>
+
+  <div class="result" id="result"></div>
+
+  <div class="card" id="quizCard"></div>
+
+  <div class="nav">
+    <button class="ghost" id="prevBtn">← Bài trước</button>
+    <button class="primary" id="checkBtn">Kiểm tra đáp án</button>
+    <button class="ghost" id="nextBtn">Bài sau →</button>
+  </div>
+
+  <footer>21 đề KET Reading Part 1 · Dữ liệu từ tài liệu của bạn · Mở offline được</footer>
+</div>
+
+<script src="data.js"></script>
+<script>
+  const $ = (s) => document.querySelector(s);
+  let idx = 0;            // chỉ số bài hiện tại
+  let signOrder = {};     // thứ tự hiển thị biển (theo bài) sau khi đảo
+  let checked = false;
+
+  // ---- khởi tạo dropdown chọn bài ----
+  const exSel = $("#exSel");
+  DATA.forEach((ex, i) => {
+    const o = document.createElement("option");
+    o.value = i; o.textContent = "Bài " + ex.id;
+    exSel.appendChild(o);
+  });
+
+  function letters(ex) { return Object.keys(ex.signs).sort(); }
+
+  function render() {
+    const ex = DATA[idx];
+    checked = false;
+    exSel.value = idx;
+    $("#result").className = "result";
+    $("#prog").style.width = ((idx + 1) / DATA.length * 100) + "%";
+    $("#prevBtn").disabled = idx === 0;
+    $("#nextBtn").disabled = idx === DATA.length - 1;
+    $("#checkBtn").textContent = "Kiểm tra đáp án";
+
+    const Ls = signOrder[ex.id] || letters(ex);
+    const opts = '<option value="">— chọn —</option>' +
+      Ls.map(L => `<option value="${L}">${L}</option>`).join("");
+
+    let html = `<h2>Bài tập ${ex.id}</h2>
+      <p class="hint">Chọn chữ cái (A–H) của biển báo phù hợp với mỗi câu. Câu <b>0</b> là ví dụ mẫu.</p>`;
+
+    ex.statements.forEach(st => {
+      const eg = st.example;
+      html += `<div class="qrow${eg ? " example" : ""}" data-n="${st.n}">
+        <div>
+          <div class="qtext"><span class="qnum">${st.n}.</span>${escapeHtml(st.text)}${eg ? '<span class="badge-eg">ví dụ</span>' : ''}</div>
+          <div class="verdict" data-v></div>
+          <div class="explain" data-x style="display:none"></div>
+        </div>
+        <div>
+          <select data-sel ${eg ? "disabled" : ""}>${opts}</select>
+        </div>
+      </div>`;
+      if (eg) {
+        // đặt sẵn đáp án ví dụ
+        setTimeout(() => {
+          const row = quizCard.querySelector(`.qrow[data-n="${st.n}"] select`);
+          if (row) { row.value = st.ans; }
+        });
+      }
+    });
+
+    // danh sách biển báo
+    html += `<details class="signs" open>
+      <summary>📋 Các biển báo (Signs)</summary>
+      <ul class="signlist">` +
+      Ls.map(L => `<li data-sign="${L}"><span class="L">${L}</span><span>${escapeHtml(ex.signs[L])}</span></li>`).join("") +
+      `</ul></details>`;
+
+    const quizCard = $("#quizCard");
+    quizCard.innerHTML = html;
+
+    // đặt đáp án ví dụ ngay
+    ex.statements.forEach(st => {
+      if (st.example) {
+        const sel = quizCard.querySelector(`.qrow[data-n="${st.n}"] select`);
+        if (sel) sel.value = st.ans;
+      }
+    });
+
+    updateScoreTag();
+  }
+
+  function check() {
+    const ex = DATA[idx];
+    const quizCard = $("#quizCard");
+    let correct = 0, total = 0;
+
+    ex.statements.forEach(st => {
+      if (st.example) return;
+      total++;
+      const row = quizCard.querySelector(`.qrow[data-n="${st.n}"]`);
+      const sel = row.querySelector("select");
+      const v = row.querySelector("[data-v]");
+      const x = row.querySelector("[data-x]");
+      sel.classList.remove("ok", "bad");
+
+      if (sel.value === st.ans) {
+        correct++;
+        sel.classList.add("ok");
+        v.className = "verdict ok"; v.textContent = "✓ Chính xác";
+      } else {
+        sel.classList.add("bad");
+        v.className = "verdict bad";
+        v.textContent = sel.value
+          ? `✗ Sai — đáp án đúng là ${st.ans}`
+          : `Chưa chọn — đáp án đúng là ${st.ans}`;
+      }
+      // hiện giải thích
+      if (ex.explain && ex.explain[st.ans]) {
+        x.style.display = "block";
+        x.innerHTML = `<b>${st.ans}:</b> ${escapeHtml(ex.explain[st.ans])}`;
+      }
+    });
+
+    checked = true;
+    $("#checkBtn").textContent = "Xem lại đáp án";
+    saveScore(ex.id, correct, total);
+
+    const r = $("#result");
+    const pct = Math.round(correct / total * 100);
+    r.textContent = `Kết quả: ${correct}/${total} câu đúng (${pct}%)` +
+      (pct === 100 ? " 🎉 Tuyệt vời!" : pct >= 60 ? " 👍 Khá tốt!" : " 💪 Cố lên!");
+    r.className = "result show " + (pct >= 80 ? "good" : "mid");
+    updateScoreTag();
+  }
+
+  // ---- điểm số lưu trong trình duyệt ----
+  function saveScore(id, c, t) {
+    const s = JSON.parse(localStorage.getItem("ket_scores") || "{}");
+    s[id] = { c, t };
+    localStorage.setItem("ket_scores", JSON.stringify(s));
+  }
+  function updateScoreTag() {
+    const s = JSON.parse(localStorage.getItem("ket_scores") || "{}");
+    const done = Object.keys(s).length;
+    let tot = 0, got = 0;
+    Object.values(s).forEach(o => { tot += o.t; got += o.c; });
+    $("#scoreTag").textContent = done
+      ? `Đã làm ${done}/${DATA.length} bài · Tổng đúng ${got}/${tot}`
+      : "Chưa làm bài nào";
+  }
+
+  function shuffleSigns() {
+    const ex = DATA[idx];
+    const Ls = letters(ex).slice();
+    for (let i = Ls.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [Ls[i], Ls[j]] = [Ls[j], Ls[i]];
+    }
+    signOrder[ex.id] = Ls;
+    render();
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, m =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
+  }
+
+  // ---- sự kiện ----
+  exSel.addEventListener("change", e => { idx = +e.target.value; render(); });
+  $("#prevBtn").addEventListener("click", () => { if (idx > 0) { idx--; render(); } });
+  $("#nextBtn").addEventListener("click", () => { if (idx < DATA.length - 1) { idx++; render(); } });
+  $("#checkBtn").addEventListener("click", check);
+  $("#shuffleBtn").addEventListener("click", shuffleSigns);
+
+  render();
+</script>
+</body>
+</html>

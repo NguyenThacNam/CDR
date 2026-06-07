@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luyện thi KET Reading — Part 1 đến 9</title>
+<style>
+  :root {
+    --bg: #f1f5f9; --card: #ffffff; --ink: #1e293b; --muted: #64748b;
+    --line: #e2e8f0; --brand: #2563eb; --soon: #94a3b8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    background: var(--bg); color: var(--ink); line-height: 1.5;
+  }
+  header {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb); color: #fff;
+    padding: 36px 20px; text-align: center;
+  }
+  header h1 { margin: 0 0 6px; font-size: 26px; }
+  header p { margin: 0; opacity: .9; font-size: 15px; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 24px 16px; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .part {
+    display: block; text-decoration: none; color: inherit;
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px; box-shadow: 0 1px 3px rgba(0,0,0,.04);
+    transition: transform .12s, box-shadow .12s, border-color .12s;
+  }
+  .part.ready:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(37,99,235,.15); border-color: var(--brand); }
+  .part .no { font-size: 13px; font-weight: 700; color: var(--brand); letter-spacing: .03em; }
+  .part h3 { margin: 6px 0 4px; font-size: 17px; }
+  .part p { margin: 0; font-size: 13px; color: var(--muted); }
+  .part .tag {
+    display: inline-block; margin-top: 12px; font-size: 12px; font-weight: 600;
+    padding: 3px 10px; border-radius: 99px;
+  }
+  .ready .tag { background: #dcfce7; color: #16a34a; }
+  .soon { opacity: .6; cursor: not-allowed; }
+  .soon .no { color: var(--soon); }
+  .soon .tag { background: #e2e8f0; color: var(--soon); }
+  footer { text-align: center; color: var(--muted); font-size: 12px; padding: 28px 0; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Luyện thi KET Reading</h1>
+  <p>Bộ đề luyện tập Part 1 → 9 · Chọn phần bên dưới để bắt đầu</p>
+</header>
+
+<div class="wrap">
+  <div class="grid" id="grid"></div>
+  <footer>Web ôn tập cá nhân · Mở offline được · Thêm part mới bằng cách tạo thư mục partN/</footer>
+</div>
+
+<script>
+  // Cập nhật khi thêm part: đổi ready: true và mô tả tương ứng
+  const PARTS = [
+    { n: 1, title: "Matching biển báo", desc: "Nối câu mô tả với biển báo (Signs)", ready: true },
+    { n: 2, title: "Part 2", desc: "Sẽ cập nhật", ready: false },
+    { n: 3, title: "Part 3", desc: "Sẽ cập nhật", ready: false },
+    { n: 4, title: "Part 4", desc: "Sẽ cập nhật", ready: false },
+    { n: 5, title: "Part 5", desc: "Sẽ cập nhật", ready: false },
+    { n: 6, title: "Part 6", desc: "Sẽ cập nhật", ready: false },
+    { n: 7, title: "Part 7", desc: "Sẽ cập nhật", ready: false },
+    { n: 8, title: "Part 8", desc: "Sẽ cập nhật", ready: false },
+    { n: 9, title: "Part 9", desc: "Sẽ cập nhật", ready: false }
+  ];
+  const grid = document.getElementById("grid");
+  PARTS.forEach(p => {
+    const el = document.createElement(p.ready ? "a" : "div");
+    el.className = "part " + (p.ready ? "ready" : "soon");
+    if (p.ready) el.href = "part" + p.n + "/index.html";
+    el.innerHTML = `
+      <div class="no">PART ${p.n}</div>
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+      <span class="tag">${p.ready ? "▶ Bắt đầu" : "Sắp có"}</span>`;
+    grid.appendChild(el);
+  });
+</script>
+</body>
+</html>

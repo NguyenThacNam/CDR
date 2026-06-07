@@ -1,0 +1,10 @@
+# Cấu hình cục bộ của Claude Code (chứa quyền/biến môi trường máy này)
+.claude/
+
+# Hệ điều hành
+Thumbs.db
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
