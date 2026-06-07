@@ -1,6 +1,9 @@
 # Cấu hình cục bộ của Claude Code (chứa quyền/biến môi trường máy này)
 .claude/
 
+# File tạm/khóa của Microsoft Office (Word/Excel mở doc sẽ sinh ra)
+~$*
+
 # Hệ điều hành
 Thumbs.db
 .DS_Store
