@@ -43,6 +43,8 @@
   .qhead { font-size: 15px; }
   .qhead .n { color: var(--brand); font-weight: 700; margin-right: 6px; }
   .qvi { font-size: 13px; color: var(--muted); margin: 2px 0 8px; font-style: italic; }
+  body.vi-hidden .qvi { display: none; }
+  button.toggle.on { background: var(--brand); color: #fff; border-color: var(--brand); }
   .opts { display: flex; flex-wrap: wrap; gap: 8px; }
   .opt { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 99px; font-size: 14px; cursor: pointer; background: #fff; user-select: none; }
   .opt .L { font-weight: 700; color: var(--brand); }
@@ -85,6 +87,7 @@
       <select id="exSel"></select>
     </div>
     <div class="picker">
+      <button class="toggle" id="viToggle" title="Ẩn/hiện nghĩa tiếng Việt của câu hỏi">🇻🇳 Nghĩa câu hỏi</button>
       <span id="scoreTag" style="font-size:14px;color:var(--muted)"></span>
     </div>
   </div>
@@ -228,6 +231,21 @@
     Object.values(s).forEach(o => { tot += o.t; got += o.c; });
     $("#scoreTag").textContent = done ? `Đã làm ${done}/${DATA.length} bài · Tổng đúng ${got}/${tot}` : "Chưa làm bài nào";
   }
+
+  // ---- an/hien nghia tieng Viet cua cau hoi ----
+  const viToggle = $("#viToggle");
+  function applyViState() {
+    const hidden = localStorage.getItem("ket_p4_hidevi") === "1";
+    document.body.classList.toggle("vi-hidden", hidden);
+    viToggle.classList.toggle("on", !hidden);
+    viToggle.textContent = hidden ? "🇻🇳 Hiện nghĩa" : "🇻🇳 Ẩn nghĩa";
+  }
+  viToggle.addEventListener("click", () => {
+    const hidden = localStorage.getItem("ket_p4_hidevi") === "1";
+    localStorage.setItem("ket_p4_hidevi", hidden ? "0" : "1");
+    applyViState();
+  });
+  applyViState();
 
   exSel.addEventListener("change", e => { idx = +e.target.value; render(); });
   $("#prevBtn").addEventListener("click", () => { if (idx > 0) { idx--; render(); } });
