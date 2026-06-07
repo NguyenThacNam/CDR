@@ -45,7 +45,7 @@
   .hint { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
 
   .qrow {
-    display: grid; grid-template-columns: 1fr 130px; gap: 12px; align-items: start;
+    display: grid; grid-template-columns: 1fr 80px; gap: 10px; align-items: start;
     padding: 12px 0; border-top: 1px solid var(--line);
   }
   .qrow:first-of-type { border-top: none; }
@@ -62,12 +62,16 @@
   select.ok { background: var(--ok-bg); border-color: var(--ok); }
   select.bad { background: var(--bad-bg); border-color: var(--bad); }
 
-  .signs { margin-top: 8px; }
-  .signs summary { cursor: pointer; font-weight: 600; color: var(--brand); font-size: 14px; padding: 6px 0; }
-  .signlist { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 6px; }
-  .signlist li { display: grid; grid-template-columns: 28px 1fr; gap: 8px; font-size: 14px; padding: 6px 8px; border-radius: 8px; background: #f8fafc; }
+  /* layout 2 cot: cau hoi trai - bien bao phai */
+  .matchgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+  .colhead { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding-bottom: 8px; border-bottom: 2px solid var(--line); margin-bottom: 2px; }
+  .col-signs { position: sticky; top: 12px; }
+
+  .signlist { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+  .signlist li { display: grid; grid-template-columns: 26px 1fr; gap: 8px; font-size: 14px; padding: 8px 10px; border-radius: 8px; background: #f8fafc; border: 1px solid transparent; }
   .signlist .L { font-weight: 700; color: var(--brand); }
-  .signlist li.used { background: #eff6ff; }
+  .signlist li.used { background: #eff6ff; border-color: #bfdbfe; }
+  .signlist li.correct { background: var(--ok-bg); border-color: var(--ok); }
 
   .result { display: none; text-align: center; padding: 16px; border-radius: 12px; margin-bottom: 16px; font-weight: 600; }
   .result.show { display: block; }
@@ -76,8 +80,9 @@
 
   .nav { display: flex; justify-content: space-between; gap: 8px; }
   footer { text-align: center; color: var(--muted); font-size: 12px; padding: 24px 0; }
-  @media (max-width: 520px) {
-    .qrow { grid-template-columns: 1fr 96px; }
+  @media (max-width: 680px) {
+    .matchgrid { grid-template-columns: 1fr; gap: 16px; }
+    .col-signs { position: static; }
   }
 </style>
 </head>
@@ -110,7 +115,7 @@
     <button class="ghost" id="nextBtn">Bài sau →</button>
   </div>
 
-  <footer>21 đề KET Reading Part 1 · Dữ liệu từ tài liệu của bạn · Mở offline được</footer>
+  <footer>20 bộ đề KET Reading Part 1 · Dữ liệu từ tài liệu của bạn · Mở offline được</footer>
 </div>
 
 <script src="data.js"></script>
@@ -145,7 +150,9 @@
       Ls.map(L => `<option value="${L}">${L}</option>`).join("");
 
     let html = `<h2>Bài tập ${ex.id}</h2>
-      <p class="hint">Chọn chữ cái (A–H) của biển báo phù hợp với mỗi câu. Câu <b>0</b> là ví dụ mẫu.</p>`;
+      <p class="hint">Đối chiếu câu mô tả (bên trái) với biển báo (bên phải), rồi chọn chữ cái A–H. Câu <b>0</b> là ví dụ mẫu.</p>
+      <div class="matchgrid">
+      <div class="col-q"><div class="colhead">Câu hỏi (Statements)</div>`;
 
     ex.statements.forEach(st => {
       const eg = st.example;
@@ -168,12 +175,12 @@
       }
     });
 
-    // danh sách biển báo
-    html += `<details class="signs" open>
-      <summary>📋 Các biển báo (Signs)</summary>
+    // dong cot cau hoi, mo cot bien bao
+    html += `</div>
+      <div class="col-signs"><div class="colhead">Biển báo (Signs)</div>
       <ul class="signlist">` +
       Ls.map(L => `<li data-sign="${L}"><span class="L">${L}</span><span>${escapeHtml(ex.signs[L])}</span></li>`).join("") +
-      `</ul></details>`;
+      `</ul></div></div>`;
 
     const quizCard = $("#quizCard");
     quizCard.innerHTML = html;
@@ -219,6 +226,9 @@
         x.style.display = "block";
         x.innerHTML = `<b>${st.ans}:</b> ${escapeHtml(ex.explain[st.ans])}`;
       }
+      // tô xanh biển báo đúng ở cột phải
+      const sign = quizCard.querySelector(`.signlist li[data-sign="${st.ans}"]`);
+      if (sign) sign.classList.add("correct");
     });
 
     checked = true;
