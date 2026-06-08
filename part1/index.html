@@ -50,6 +50,9 @@
   }
   .qrow:first-of-type { border-top: none; }
   .qrow .qtext { font-size: 15px; }
+  .qrow .qvi { font-size: 13px; color: var(--muted); font-style: italic; margin-top: 2px; }
+  body.vi-hidden .qrow .qvi { display: none; }
+  button.toggle.on { background: var(--brand); color: #fff; border-color: var(--brand); }
   .qrow .qnum { color: var(--brand); font-weight: 700; margin-right: 6px; }
   .qrow.example { opacity: .7; }
   .badge-eg { font-size: 11px; background: #e0e7ff; color: #3730a3; padding: 1px 7px; border-radius: 99px; margin-left: 6px; vertical-align: middle; }
@@ -100,6 +103,7 @@
       <button class="ghost" id="shuffleBtn" title="Đảo thứ tự biển báo">🔀 Đảo đáp án</button>
     </div>
     <div class="picker">
+      <button class="ghost toggle" id="viToggle" title="Ẩn/hiện nghĩa tiếng Việt của câu hỏi">🇻🇳 Nghĩa câu hỏi</button>
       <span id="scoreTag" style="font-size:14px;color:var(--muted)"></span>
     </div>
   </div>
@@ -159,6 +163,7 @@
       html += `<div class="qrow${eg ? " example" : ""}" data-n="${st.n}">
         <div>
           <div class="qtext"><span class="qnum">${st.n}.</span>${escapeHtml(st.text)}${eg ? '<span class="badge-eg">ví dụ</span>' : ''}</div>
+          ${st.vi ? `<div class="qvi">${escapeHtml(st.vi)}</div>` : ""}
           <div class="verdict" data-v></div>
           <div class="explain" data-x style="display:none"></div>
         </div>
@@ -281,6 +286,21 @@
   $("#nextBtn").addEventListener("click", () => { if (idx < DATA.length - 1) { idx++; render(); } });
   $("#checkBtn").addEventListener("click", check);
   $("#shuffleBtn").addEventListener("click", shuffleSigns);
+
+  // ---- an/hien nghia tieng Viet cua cau hoi ----
+  const viToggle = $("#viToggle");
+  function applyViState() {
+    const hidden = localStorage.getItem("ket_p1_hidevi") === "1";
+    document.body.classList.toggle("vi-hidden", hidden);
+    viToggle.classList.toggle("on", !hidden);
+    viToggle.textContent = hidden ? "🇻🇳 Hiện nghĩa" : "🇻🇳 Ẩn nghĩa";
+  }
+  viToggle.addEventListener("click", () => {
+    const hidden = localStorage.getItem("ket_p1_hidevi") === "1";
+    localStorage.setItem("ket_p1_hidevi", hidden ? "0" : "1");
+    applyViState();
+  });
+  applyViState();
 
   render();
 </script>

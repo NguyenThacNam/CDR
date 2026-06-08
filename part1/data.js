@@ -4,12 +4,12 @@ const DATA = [
   {
     id: 1, image: "image_b96f7d.jpg",
     statements: [
-      { n: 0, text: "This is broken.", ans: "C", example: true },
-      { n: 1, text: "Children pay less than adults here.", ans: "H" },
-      { n: 2, text: "Be careful because this will burn.", ans: "F" },
-      { n: 3, text: "We don't want any money yet.", ans: "E" },
-      { n: 4, text: "Things are cheaper here.", ans: "A" },
-      { n: 5, text: "You must pay with cash.", ans: "G" }
+      { n: 0, text: "This is broken.", ans: "C", example: true, vi: "Cái này bị hỏng." },
+      { n: 1, text: "Children pay less than adults here.", ans: "H", vi: "Trẻ em trả ít tiền hơn người lớn ở đây." },
+      { n: 2, text: "Be careful because this will burn.", ans: "F", vi: "Cẩn thận vì cái này sẽ cháy." },
+      { n: 3, text: "We don't want any money yet.", ans: "E", vi: "Chúng tôi chưa cần tiền vội." },
+      { n: 4, text: "Things are cheaper here.", ans: "A", vi: "Đồ ở đây rẻ hơn." },
+      { n: 5, text: "You must pay with cash.", ans: "G", vi: "Bạn phải trả bằng tiền mặt." }
     ],
     signs: {
       A: "SUMMER SALE LOW PRICES IN ALL DEPARTMENTS",
@@ -32,11 +32,11 @@ const DATA = [
   {
     id: 2, image: "image_b911c7.jpg",
     statements: [
-      { n: 1, text: "Not all drivers can stop here.", ans: "D" },
-      { n: 2, text: "Children cannot come here in the evening.", ans: "A" },
-      { n: 3, text: "Drivers must be careful.", ans: "C" },
-      { n: 4, text: "Not everyone can make a call from here.", ans: "B" },
-      { n: 5, text: "Only adults have to pay here.", ans: "E" }
+      { n: 1, text: "Not all drivers can stop here.", ans: "D", vi: "Không phải tài xế nào cũng được dừng ở đây." },
+      { n: 2, text: "Children cannot come here in the evening.", ans: "A", vi: "Trẻ em không được vào đây vào buổi tối." },
+      { n: 3, text: "Drivers must be careful.", ans: "C", vi: "Tài xế phải cẩn thận." },
+      { n: 4, text: "Not everyone can make a call from here.", ans: "B", vi: "Không phải ai cũng gọi điện được từ đây." },
+      { n: 5, text: "Only adults have to pay here.", ans: "E", vi: "Chỉ người lớn mới phải trả tiền ở đây." }
     ],
     signs: {
       A: "SWIMMING POOL ADULTS ONLY 6–8 p.m.",
@@ -59,11 +59,11 @@ const DATA = [
   {
     id: 3, image: "image_b90688.jpg",
     statements: [
-      { n: 1, text: "These are cheaper if you buy several of them.", ans: "E" },
-      { n: 2, text: "You can't get many different meals here.", ans: "C" },
-      { n: 3, text: "Put this in a cold place.", ans: "A" },
-      { n: 4, text: "You are too late to get a seat for this show.", ans: "G" },
-      { n: 5, text: "This place is not open all night.", ans: "B" }
+      { n: 1, text: "These are cheaper if you buy several of them.", ans: "E", vi: "Những thứ này rẻ hơn nếu bạn mua nhiều cái." },
+      { n: 2, text: "You can't get many different meals here.", ans: "C", vi: "Bạn không có nhiều món ăn khác nhau ở đây." },
+      { n: 3, text: "Put this in a cold place.", ans: "A", vi: "Đặt cái này ở nơi lạnh." },
+      { n: 4, text: "You are too late to get a seat for this show.", ans: "G", vi: "Bạn đến quá muộn để có chỗ ngồi cho buổi diễn này." },
+      { n: 5, text: "This place is not open all night.", ans: "B", vi: "Nơi này không mở cửa suốt đêm." }
     ],
     signs: {
       A: "KEEP IN FRIDGE",
@@ -86,11 +86,11 @@ const DATA = [
   {
     id: 4, image: "image_b8f45c.jpg",
     statements: [
-      { n: 1, text: "You must not play football here.", ans: "G" },
-      { n: 2, text: "You may be late.", ans: "B" },
-      { n: 3, text: "You should not leave your car here.", ans: "D" },
-      { n: 4, text: "You can study here soon.", ans: "H" },
-      { n: 5, text: "You cannot drive here today.", ans: "A" }
+      { n: 1, text: "You must not play football here.", ans: "G", vi: "Bạn không được chơi bóng đá ở đây." },
+      { n: 2, text: "You may be late.", ans: "B", vi: "Bạn có thể bị muộn." },
+      { n: 3, text: "You should not leave your car here.", ans: "D", vi: "Bạn không nên để xe ở đây." },
+      { n: 4, text: "You can study here soon.", ans: "H", vi: "Bạn sắp có thể học ở đây." },
+      { n: 5, text: "You cannot drive here today.", ans: "A", vi: "Hôm nay bạn không thể lái xe qua đây." }
     ],
     signs: {
       A: "Bridge closed to traffic because of high wind.",
@@ -112,11 +112,11 @@ const DATA = [
   {
     id: 5, image: "image_b8f366.jpg",
     statements: [
-      { n: 1, text: "This is not for adults.", ans: "A" },
-      { n: 2, text: "You can't drive this way.", ans: "C" },
-      { n: 3, text: "We can help you day and night.", ans: "D" },
-      { n: 4, text: "You can have dinner here.", ans: "B" },
-      { n: 5, text: "Come here to book a holiday.", ans: "F" }
+      { n: 1, text: "This is not for adults.", ans: "A", vi: "Cái này không dành cho người lớn." },
+      { n: 2, text: "You can't drive this way.", ans: "C", vi: "Bạn không thể lái xe theo đường này." },
+      { n: 3, text: "We can help you day and night.", ans: "D", vi: "Chúng tôi có thể giúp bạn cả ngày lẫn đêm." },
+      { n: 4, text: "You can have dinner here.", ans: "B", vi: "Bạn có thể ăn tối ở đây." },
+      { n: 5, text: "Come here to book a holiday.", ans: "F", vi: "Đến đây để đặt một kỳ nghỉ." }
     ],
     signs: {
       A: "YOUTH CLUB - Under 16s only",
@@ -139,11 +139,11 @@ const DATA = [
   {
     id: 6, image: "image_b89ced.jpg",
     statements: [
-      { n: 1, text: "You can't leave your bicycle here.", ans: "C" },
-      { n: 2, text: "Adults shouldn't let children play with this.", ans: "G" },
-      { n: 3, text: "You can buy children's clothes here.", ans: "A" },
-      { n: 4, text: "Do not come in if you are not wearing the right clothes.", ans: "B" },
-      { n: 5, text: "Use this door to go outside.", ans: "F" }
+      { n: 1, text: "You can't leave your bicycle here.", ans: "C", vi: "Bạn không được để xe đạp ở đây." },
+      { n: 2, text: "Adults shouldn't let children play with this.", ans: "G", vi: "Người lớn không nên để trẻ em chơi với cái này." },
+      { n: 3, text: "You can buy children's clothes here.", ans: "A", vi: "Bạn có thể mua quần áo trẻ em ở đây." },
+      { n: 4, text: "Do not come in if you are not wearing the right clothes.", ans: "B", vi: "Đừng vào nếu bạn không mặc đúng trang phục." },
+      { n: 5, text: "Use this door to go outside.", ans: "F", vi: "Dùng cửa này để ra ngoài." }
     ],
     signs: {
       A: "School Uniform Department – This floor",
@@ -166,11 +166,11 @@ const DATA = [
   {
     id: 7, image: "image_b892c0.jpg",
     statements: [
-      { n: 1, text: "This is only for young people.", ans: "H" },
-      { n: 2, text: "Go to the next floor if you want a drink.", ans: "B" },
-      { n: 3, text: "You cannot drive here today.", ans: "C" },
-      { n: 4, text: "We are open every day.", ans: "G" },
-      { n: 5, text: "Do not bring your lunch in here.", ans: "D" }
+      { n: 1, text: "This is only for young people.", ans: "H", vi: "Cái này chỉ dành cho người trẻ tuổi." },
+      { n: 2, text: "Go to the next floor if you want a drink.", ans: "B", vi: "Lên tầng kế tiếp nếu bạn muốn uống nước." },
+      { n: 3, text: "You cannot drive here today.", ans: "C", vi: "Hôm nay bạn không thể lái xe qua đây." },
+      { n: 4, text: "We are open every day.", ans: "G", vi: "Chúng tôi mở cửa mỗi ngày." },
+      { n: 5, text: "Do not bring your lunch in here.", ans: "D", vi: "Đừng mang bữa trưa vào đây." }
     ],
     signs: {
       B: "COFFEE MACHINE UPSTAIRS",
@@ -192,11 +192,11 @@ const DATA = [
   {
     id: 8, image: "image_b88a6a.jpg",
     statements: [
-      { n: 1, text: "You can use this for two days.", ans: "F" },
-      { n: 2, text: "Students do not have to pay to go here at weekends.", ans: "E" },
-      { n: 3, text: "Someone would like to speak another language.", ans: "A" },
-      { n: 4, text: "If you study here, you will pay less for this.", ans: "C" },
-      { n: 5, text: "You can find things to listen to here in the college.", ans: "B" }
+      { n: 1, text: "You can use this for two days.", ans: "F", vi: "Bạn có thể dùng cái này trong hai ngày." },
+      { n: 2, text: "Students do not have to pay to go here at weekends.", ans: "E", vi: "Sinh viên không phải trả tiền vào đây vào cuối tuần." },
+      { n: 3, text: "Someone would like to speak another language.", ans: "A", vi: "Có người muốn nói một ngôn ngữ khác." },
+      { n: 4, text: "If you study here, you will pay less for this.", ans: "C", vi: "Nếu bạn học ở đây, bạn sẽ trả ít tiền hơn cho cái này." },
+      { n: 5, text: "You can find things to listen to here in the college.", ans: "B", vi: "Bạn có thể tìm thấy thứ để nghe ở đây trong trường." }
     ],
     signs: {
       A: "WANTED Spanish lessons",
@@ -219,11 +219,11 @@ const DATA = [
   {
     id: 9, image: "image_b87fbe.jpg",
     statements: [
-      { n: 1, text: "These cost less than usual.", ans: "G" },
-      { n: 2, text: "This is a bad time to be ill.", ans: "D" },
-      { n: 3, text: "Be careful where you put this.", ans: "A" },
-      { n: 4, text: "You will need to take a heavy sweater or jacket with you.", ans: "E" },
-      { n: 5, text: "You will not be able to wash yourself here for a few days.", ans: "C" }
+      { n: 1, text: "These cost less than usual.", ans: "G", vi: "Những thứ này có giá rẻ hơn bình thường." },
+      { n: 2, text: "This is a bad time to be ill.", ans: "D", vi: "Đây là thời điểm tồi tệ để bị ốm." },
+      { n: 3, text: "Be careful where you put this.", ans: "A", vi: "Cẩn thận nơi bạn đặt cái này." },
+      { n: 4, text: "You will need to take a heavy sweater or jacket with you.", ans: "E", vi: "Bạn sẽ cần mang theo áo len dày hoặc áo khoác." },
+      { n: 5, text: "You will not be able to wash yourself here for a few days.", ans: "C", vi: "Bạn sẽ không thể tắm rửa ở đây trong vài ngày." }
     ],
     signs: {
       A: "KEEP THIS MEDICINE AWAY FROM CHILDREN",
@@ -245,11 +245,11 @@ const DATA = [
   {
     id: 10, image: "image_b87f80.jpg",
     statements: [
-      { n: 1, text: "If you have a second class ticket, you can't go in here.", ans: "E" },
-      { n: 2, text: "You should wait here before you sit down.", ans: "G" },
-      { n: 3, text: "There are no more seats for the show.", ans: "F" },
-      { n: 4, text: "If you want a seat, get your ticket seven days before you travel.", ans: "D" },
-      { n: 5, text: "First class tickets are cheaper at the weekend.", ans: "B" }
+      { n: 1, text: "If you have a second class ticket, you can't go in here.", ans: "E", vi: "Nếu bạn có vé hạng hai, bạn không được vào đây." },
+      { n: 2, text: "You should wait here before you sit down.", ans: "G", vi: "Bạn nên đợi ở đây trước khi ngồi xuống." },
+      { n: 3, text: "There are no more seats for the show.", ans: "F", vi: "Không còn chỗ ngồi nào cho buổi diễn." },
+      { n: 4, text: "If you want a seat, get your ticket seven days before you travel.", ans: "D", vi: "Nếu muốn có chỗ ngồi, hãy mua vé trước khi đi bảy ngày." },
+      { n: 5, text: "First class tickets are cheaper at the weekend.", ans: "B", vi: "Vé hạng nhất rẻ hơn vào cuối tuần." }
     ],
     signs: {
       A: "SEATS AT THE FRONT RESERVED FOR CHILDREN",
@@ -272,11 +272,11 @@ const DATA = [
   {
     id: 11, image: "image_b81de6.jpg",
     statements: [
-      { n: 1, text: "You can't leave your car here all day.", ans: "C" },
-      { n: 2, text: "You pay less to eat at this time.", ans: "G" },
-      { n: 3, text: "If you are staying here, you may leave your car in this place.", ans: "E" },
-      { n: 4, text: "Bring a friend here for lunch and you will pay for only one meal.", ans: "D" },
-      { n: 5, text: "You cannot drive here at the moment.", ans: "A" }
+      { n: 1, text: "You can't leave your car here all day.", ans: "C", vi: "Bạn không thể để xe ở đây cả ngày." },
+      { n: 2, text: "You pay less to eat at this time.", ans: "G", vi: "Bạn trả ít tiền hơn để ăn vào giờ này." },
+      { n: 3, text: "If you are staying here, you may leave your car in this place.", ans: "E", vi: "Nếu bạn lưu trú ở đây, bạn có thể để xe tại chỗ này." },
+      { n: 4, text: "Bring a friend here for lunch and you will pay for only one meal.", ans: "D", vi: "Đưa một người bạn đến đây ăn trưa và bạn chỉ phải trả tiền một suất." },
+      { n: 5, text: "You cannot drive here at the moment.", ans: "A", vi: "Hiện tại bạn không thể lái xe qua đây." }
     ],
     signs: {
       A: "ROAD CLOSED | BECAUSE OF TRAFFIC ACCIDENT",
@@ -299,11 +299,11 @@ const DATA = [
   {
     id: 12, image: "image_b815ca.jpg",
     statements: [
-      { n: 1, text: "You can listen to a writer here one evening this week.", ans: "C" },
-      { n: 2, text: "If you have lost a book, call this number.", ans: "F" },
-      { n: 3, text: "Always keep your bags with you.", ans: "G" },
-      { n: 4, text: "When you have finished reading, put back all the books.", ans: "A" },
-      { n: 5, text: "You can eat lunch during this meeting.", ans: "E" }
+      { n: 1, text: "You can listen to a writer here one evening this week.", ans: "C", vi: "Bạn có thể nghe một nhà văn ở đây vào một buổi tối trong tuần này." },
+      { n: 2, text: "If you have lost a book, call this number.", ans: "F", vi: "Nếu bạn làm mất sách, hãy gọi số này." },
+      { n: 3, text: "Always keep your bags with you.", ans: "G", vi: "Luôn giữ túi xách bên mình." },
+      { n: 4, text: "When you have finished reading, put back all the books.", ans: "A", vi: "Khi đọc xong, hãy để lại tất cả sách về chỗ cũ." },
+      { n: 5, text: "You can eat lunch during this meeting.", ans: "E", vi: "Bạn có thể ăn trưa trong buổi gặp này." }
     ],
     signs: {
       A: "STUDENT LIBRARY | Return books to shelves after use",
@@ -326,11 +326,11 @@ const DATA = [
   {
     id: 13, image: "image_b80aa2.jpg",
     statements: [
-      { n: 1, text: "Young people and their parents may choose different meals.", ans: "E" },
-      { n: 2, text: "You can eat here in the evenings.", ans: "D" },
-      { n: 3, text: "The waitress will show you where to sit.", ans: "G" },
-      { n: 4, text: "You can stay the night here.", ans: "B" },
-      { n: 5, text: "You should not usually use this door to go outside.", ans: "A" }
+      { n: 1, text: "Young people and their parents may choose different meals.", ans: "E", vi: "Trẻ em và bố mẹ có thể chọn những món ăn khác nhau." },
+      { n: 2, text: "You can eat here in the evenings.", ans: "D", vi: "Bạn có thể ăn ở đây vào buổi tối." },
+      { n: 3, text: "The waitress will show you where to sit.", ans: "G", vi: "Nữ phục vụ sẽ chỉ cho bạn chỗ ngồi." },
+      { n: 4, text: "You can stay the night here.", ans: "B", vi: "Bạn có thể ở lại qua đêm ở đây." },
+      { n: 5, text: "You should not usually use this door to go outside.", ans: "A", vi: "Bình thường bạn không nên dùng cửa này để ra ngoài." }
     ],
     signs: {
       A: "FIRE EXIT ONLY – NO ENTRANCE TO GARDEN",
@@ -353,11 +353,11 @@ const DATA = [
   {
     id: 14, image: "image_863af1.jpg",
     statements: [
-      { n: 1, text: "You must have a ticket to go past here.", ans: "D" },
-      { n: 2, text: "If you want to travel Monday to Friday, this ticket is cheaper.", ans: "H" },
-      { n: 3, text: "Please let anybody carrying a lot of luggage sit here.", ans: "B" },
-      { n: 4, text: "You can only buy your ticket here if you have cash.", ans: "A" },
-      { n: 5, text: "People who are travelling can eat something here.", ans: "E" }
+      { n: 1, text: "You must have a ticket to go past here.", ans: "D", vi: "Bạn phải có vé mới được đi qua đây." },
+      { n: 2, text: "If you want to travel Monday to Friday, this ticket is cheaper.", ans: "H", vi: "Nếu bạn đi từ thứ Hai đến thứ Sáu, vé này rẻ hơn." },
+      { n: 3, text: "Please let anybody carrying a lot of luggage sit here.", ans: "B", vi: "Hãy nhường chỗ này cho người mang nhiều hành lý." },
+      { n: 4, text: "You can only buy your ticket here if you have cash.", ans: "A", vi: "Bạn chỉ mua được vé ở đây nếu có tiền mặt." },
+      { n: 5, text: "People who are travelling can eat something here.", ans: "E", vi: "Hành khách có thể ăn gì đó ở đây." }
     ],
     signs: {
       A: "These ticket machines take £20 and £10 | No credit cards",
@@ -380,11 +380,11 @@ const DATA = [
   {
     id: 15, image: "image_863028.jpg",
     statements: [
-      { n: 1, text: "They need someone to work here.", ans: "G" },
-      { n: 2, text: "A special visitor is coming to the shop.", ans: "B" },
-      { n: 3, text: "Go here if you need help.", ans: "F" },
-      { n: 4, text: "This has moved to a different place.", ans: "A" },
-      { n: 5, text: "There is a new book on sale.", ans: "E" }
+      { n: 1, text: "They need someone to work here.", ans: "G", vi: "Họ cần người đến làm việc ở đây." },
+      { n: 2, text: "A special visitor is coming to the shop.", ans: "B", vi: "Một vị khách đặc biệt sắp đến cửa hàng." },
+      { n: 3, text: "Go here if you need help.", ans: "F", vi: "Đến đây nếu bạn cần trợ giúp." },
+      { n: 4, text: "This has moved to a different place.", ans: "A", vi: "Cái này đã chuyển sang chỗ khác." },
+      { n: 5, text: "There is a new book on sale.", ans: "E", vi: "Có một cuốn sách mới đang được bán." }
     ],
     signs: {
       A: "Children's book department now on ground floor",
@@ -407,11 +407,11 @@ const DATA = [
   {
     id: 16, image: "image_862904.jpg",
     statements: [
-      { n: 1, text: "You cannot come here tomorrow.", ans: "B" },
-      { n: 2, text: "If you want to play music well, you can study here.", ans: "F" },
-      { n: 3, text: "You will have to pay more if you come to this place tomorrow.", ans: "D" },
-      { n: 4, text: "You can get cheaper tickets if you are at college.", ans: "A" },
-      { n: 5, text: "You can buy music more cheaply here for a short time.", ans: "G" }
+      { n: 1, text: "You cannot come here tomorrow.", ans: "B", vi: "Ngày mai bạn không thể đến đây." },
+      { n: 2, text: "If you want to play music well, you can study here.", ans: "F", vi: "Nếu muốn chơi nhạc giỏi, bạn có thể học ở đây." },
+      { n: 3, text: "You will have to pay more if you come to this place tomorrow.", ans: "D", vi: "Bạn sẽ phải trả nhiều tiền hơn nếu đến nơi này vào ngày mai." },
+      { n: 4, text: "You can get cheaper tickets if you are at college.", ans: "A", vi: "Bạn có thể mua vé rẻ hơn nếu là sinh viên." },
+      { n: 5, text: "You can buy music more cheaply here for a short time.", ans: "G", vi: "Bạn có thể mua nhạc rẻ hơn ở đây trong thời gian ngắn." }
     ],
     signs: {
       A: "JULES FOURNIER PLAYS CLASSICAL GUITAR | Students half price",
@@ -434,11 +434,11 @@ const DATA = [
   {
     id: 17, image: "image_8624e2.png",
     statements: [
-      { n: 1, text: "If you need a job, try telephoning this number.", ans: "D" },
-      { n: 2, text: "You should pay with cash here.", ans: "B" },
-      { n: 3, text: "Sometimes you don't have to book here.", ans: "A" },
-      { n: 4, text: "If you find what this person is looking for, you will get some money.", ans: "H" },
-      { n: 5, text: "This shop has lower prices than the other shops near to it.", ans: "F" }
+      { n: 1, text: "If you need a job, try telephoning this number.", ans: "D", vi: "Nếu cần việc làm, hãy thử gọi số này." },
+      { n: 2, text: "You should pay with cash here.", ans: "B", vi: "Bạn nên trả bằng tiền mặt ở đây." },
+      { n: 3, text: "Sometimes you don't have to book here.", ans: "A", vi: "Đôi khi bạn không cần đặt trước ở đây." },
+      { n: 4, text: "If you find what this person is looking for, you will get some money.", ans: "H", vi: "Nếu bạn tìm thấy thứ người này đang tìm, bạn sẽ được thưởng tiền." },
+      { n: 5, text: "This shop has lower prices than the other shops near to it.", ans: "F", vi: "Cửa hàng này có giá thấp hơn các cửa hàng lân cận." }
     ],
     signs: {
       A: "JANE MUIR HAIRDRESSERS | Appointments are not always needed.",
@@ -460,11 +460,11 @@ const DATA = [
   {
     id: 18, image: "image_861d01.jpg",
     statements: [
-      { n: 1, text: "You can learn how to make different kinds of food on this course.", ans: "H" },
-      { n: 2, text: "You have to get off one train and get on another if you want to go to Cambridge.", ans: "F" },
-      { n: 3, text: "Phone this person if you want a job working with cars.", ans: "A" },
-      { n: 4, text: "If you want someone to wash some clothes for you, it will be cheaper this week.", ans: "G" },
-      { n: 5, text: "You mustn't take too many clothes to try on.", ans: "C" }
+      { n: 1, text: "You can learn how to make different kinds of food on this course.", ans: "H", vi: "Bạn có thể học cách làm nhiều món ăn khác nhau ở khóa học này." },
+      { n: 2, text: "You have to get off one train and get on another if you want to go to Cambridge.", ans: "F", vi: "Bạn phải xuống tàu này và lên tàu khác nếu muốn đi Cambridge." },
+      { n: 3, text: "Phone this person if you want a job working with cars.", ans: "A", vi: "Gọi cho người này nếu bạn muốn làm việc liên quan đến ô tô." },
+      { n: 4, text: "If you want someone to wash some clothes for you, it will be cheaper this week.", ans: "G", vi: "Nếu bạn muốn ai đó giặt quần áo giúp, tuần này sẽ rẻ hơn." },
+      { n: 5, text: "You mustn't take too many clothes to try on.", ans: "C", vi: "Bạn không được mang quá nhiều đồ vào thử." }
     ],
     signs: {
       A: "Mechanic needed | Call garage Manager (Cambridge 221507)",
@@ -486,11 +486,11 @@ const DATA = [
   {
     id: 19, image: "image_85c787.png",
     statements: [
-      { n: 1, text: "You cannot travel by railway until tomorrow.", ans: "D" },
-      { n: 2, text: "Children and parents travel for less with this.", ans: "C" },
-      { n: 3, text: "You must pay before you travel on this.", ans: "G" },
-      { n: 4, text: "Only adults pay to go in here.", ans: "A" },
-      { n: 5, text: "This is late because of bad weather.", ans: "F" }
+      { n: 1, text: "You cannot travel by railway until tomorrow.", ans: "D", vi: "Bạn không thể đi tàu cho đến ngày mai." },
+      { n: 2, text: "Children and parents travel for less with this.", ans: "C", vi: "Trẻ em và bố mẹ đi lại rẻ hơn nhờ cái này." },
+      { n: 3, text: "You must pay before you travel on this.", ans: "G", vi: "Bạn phải trả tiền trước khi đi cái này." },
+      { n: 4, text: "Only adults pay to go in here.", ans: "A", vi: "Chỉ người lớn mới phải trả tiền vào đây." },
+      { n: 5, text: "This is late because of bad weather.", ans: "F", vi: "Cái này bị trễ vì thời tiết xấu." }
     ],
     signs: {
       A: "MUSEUM OF TRAVEL AND TRANSPORT | Entrance free for children",
@@ -513,11 +513,11 @@ const DATA = [
   {
     id: 20, image: "image_85c3c1.png",
     statements: [
-      { n: 1, text: "If you want to do something special for your child's birthday, call this number.", ans: "F" },
-      { n: 2, text: "This company can take you to catch your plane at any time.", ans: "H" },
-      { n: 3, text: "If you need to buy something to wear, this may be the cheapest place to look.", ans: "E" },
-      { n: 4, text: "This restaurant always has special meals for children.", ans: "D" },
-      { n: 5, text: "If you need to know about the traffic, you can call this number.", ans: "B" }
+      { n: 1, text: "If you want to do something special for your child's birthday, call this number.", ans: "F", vi: "Nếu bạn muốn làm điều gì đó đặc biệt cho sinh nhật con, hãy gọi số này." },
+      { n: 2, text: "This company can take you to catch your plane at any time.", ans: "H", vi: "Công ty này có thể đưa bạn ra sân bay bất kỳ lúc nào." },
+      { n: 3, text: "If you need to buy something to wear, this may be the cheapest place to look.", ans: "E", vi: "Nếu cần mua đồ mặc, đây có thể là nơi rẻ nhất." },
+      { n: 4, text: "This restaurant always has special meals for children.", ans: "D", vi: "Nhà hàng này luôn có món ăn riêng cho trẻ em." },
+      { n: 5, text: "If you need to know about the traffic, you can call this number.", ans: "B", vi: "Nếu cần biết tình hình giao thông, bạn có thể gọi số này." }
     ],
     signs: {
       A: "For times of afternoon coach trips, please ask hotel receptionist",
